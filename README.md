@@ -9,6 +9,7 @@ file: `.drone.yml`
 ```yml
 notify:
   prowlapp:
+    image: seejy/drone-prowlapp
     apikey: some-prowlapp-apikey
     providerkey: some-prowlapp-providerkey 
 ```
