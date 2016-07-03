@@ -4,16 +4,16 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/cj123/goprowl"
 	"github.com/drone/drone-go/drone"
 	"github.com/drone/drone-go/plugin"
-	"github.com/cj123/goprowl"
 )
 
 var buildCommit string
 
 type ProwlConfig struct {
 	ProviderKey string `json:"provider_key"`
-	APIKey string `json:"apikey"`
+	APIKey      string `json:"apikey"`
 }
 
 func main() {
@@ -49,12 +49,11 @@ func main() {
 			build.Branch,
 			build.Author,
 		),
-		URL: fmt.Sprintf("%s/%s/%v", sys.Link, repo.FullName, build.Number),
+		URL:   fmt.Sprintf("%s/%s/%v", sys.Link, repo.FullName, build.Number),
 		Event: "Build " + build.Status + " - " + repo.FullName,
 	}
 
 	notification.AddKey(vargs.APIKey)
-	fmt.Println(fmt.Sprintf("%s/%s/%v", sys.Link, repo.FullName, build.Number))
 	err = prowl.Push(notification)
 
 	if err != nil {
