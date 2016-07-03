@@ -11,7 +11,7 @@ notify:
   prowlapp:
     image: seejy/drone-prowlapp
     apikey: some-prowlapp-apikey
-    providerkey: some-prowlapp-providerkey 
+    provider_key: some-prowlapp-providerkey 
 ```
 
 ## developing
