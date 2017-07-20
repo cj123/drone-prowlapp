@@ -26,6 +26,14 @@ func main() {
 		repoFullName = os.Getenv("DRONE_REPO")
 	)
 
+	if providerKey == "" {
+		providerKey = os.Getenv("PROWLAPP_PROVIDERKEY")
+	}
+
+	if apiKey == "" {
+		apiKey = os.Getenv("PROWLAPP_APIKEY")
+	}
+
 	prowl := goprowl.NewProwlClient(providerKey)
 
 	notification := goprowl.Notification{
